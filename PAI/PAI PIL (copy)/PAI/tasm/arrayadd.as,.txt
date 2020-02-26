@@ -1,0 +1,24 @@
+.model small
+.stack
+.data
+	output dw 0h
+	array db 10h,20h,30h,40h
+
+.code
+	mov ax,@data
+	mov ds,ax
+	sum1:	
+	mov dx,offset array
+	add output, [dx]
+	inc dx
+	cmp dx, 11
+	jne sum1
+
+	mov dl, output
+	mov al,2h
+	int 21h
+	
+
+	mov ah,4ch
+	int 21h
+END

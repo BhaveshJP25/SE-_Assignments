@@ -1,0 +1,61 @@
+Turbo Assembler	 Version 2.0	    12/17/19 14:31:53	    Page 1
+first.asm
+
+
+
+      1				     ;	      page 60.132
+      2				     ;TITLE   AD4ASM2 (EXE)   Move and Add Operations
+      3				     ;------------------------------------------------------------
+      4	0000				     .MODEL  SMALL
+      5	0000				     .STACK  64
+      6	0000				     .DATA
+      7	0000  00AF		     FLDD    DW	     175
+      8	0002  0096		     FLDE    DW	     150
+      9	0004  ????		     FLDF    DW	     ?
+     10				     ;------------------------------------------------------------
+     11	0006				     .CODE
+     12	0000			     MAIN    PROC    FAR
+     13	0000  B8 0000s			     MOV     AX,@DATA
+     14	0003  8E D8			     MOV     DS,AX
+     15
+     16	0005  A1 0000r			     MOV     AX,FLDD
+     17	0008  03 06 0002r		     ADD     AX,FLDE
+     18	000C  A3 0004r			     MOV     FLDF,AX
+     19
+     20	000F  B8 4C00			     MOV     AX,4C00H
+     21	0012  CD 21			     INT     21H
+     22	0014			     MAIN    ENDP
+     23					     END     MAIN
+Turbo Assembler	 Version 2.0	    12/17/19 14:31:53	    Page 2
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??DATE				  Text	 "12/17/19"
+??FILENAME			  Text	 "first	  "
+??TIME				  Text	 "14:31:53"
+??VERSION			  Number 0200
+@CODE				  Text	 _TEXT
+@CODESIZE			  Text	 0
+@CPU				  Text	 0101H
+@CURSEG				  Text	 _TEXT
+@DATA				  Text	 DGROUP
+@DATASIZE			  Text	 0
+@FILENAME			  Text	 FIRST
+@MODEL				  Text	 2
+@WORDSIZE			  Text	 2
+FLDD				  Word	 DGROUP:0000
+FLDE				  Word	 DGROUP:0002
+FLDF				  Word	 DGROUP:0004
+MAIN				  Far	 _TEXT:0000
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+DGROUP				  Group
+  STACK				  16  0040 Para	  Stack	  STACK
+  _DATA				  16  0006 Word	  Public  DATA
+_TEXT				  16  0014 Word	  Public  CODE
+
